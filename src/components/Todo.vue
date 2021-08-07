@@ -1,9 +1,10 @@
 <template>
 <div>
+  <!-- ここでidは string | number で型エラー -> "(value, key) in object" と "(item, index) in array"だから? -->
   <div v-for="(todo, id) in data.todos" :key="id">
-    <input type="checkbox" @change="checkTodo(id)" />
+    <input type="checkbox" @change="checkTodo(id.toString())" />
     {{todo.title}}
-    <button @click="deleteTodo(id)">削除</button>
+    <button @click="deleteTodo(id.toString())">削除</button>
   </div>
 
   <button @click="deleteCheckedTodoos">チェック済みをすべて削除する</button>
